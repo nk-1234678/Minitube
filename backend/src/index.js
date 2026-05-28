@@ -39,7 +39,11 @@ connectDB()
 .then (()=>{
     app.listen(process.env.PORT || 5000,()=>{
         console.log(`Server is running on ${process.env.PORT}`)
-    })
+    });
+
+    app.on("error",(error)=>{
+        console.log("Server Error: ",error);
+    });
 })
 .catch((err)=>{
     console.log("mongodb connection failed",err);
